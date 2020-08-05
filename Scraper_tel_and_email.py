@@ -15,15 +15,14 @@ all_site = [
 
 ]
 emails = []
-tel=[]
+tel = []
 for site in all_site:
     req = requests.get(site)
-    soup = BeautifulSoup(req.content,'html.parser')
-    for link in soup.find_all('a',attrs={'href':re.compile('mailto:')}):
+    soup = BeautifulSoup(req.content, 'html.parser')
+    for link in soup.find_all('a', attrs={'href': re.compile('mailto:')}):
         emails.append(link.get('href'))
-    for link in soup.find_all('a',attrs={'href':re.compile('tel:')}):
+    for link in soup.find_all('a', attrs={'href': re.compile('tel:')}):
         tel.append(link.get('href'))
 
 print(emails)
 print(tel)
-    
